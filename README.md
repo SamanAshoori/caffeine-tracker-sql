@@ -1,37 +1,34 @@
-Caffeine Tracker 🥤☕
+# Caffeine Tracker 🥤☕
 
-Welcome to the Caffeine Tracker! This application helps you track your energy drink consumption, including details like brands, drinks, stores, and transactions. It's hosted on Replit and uses PostgreSQL for data storage.
-Features ✨
+Welcome to the **Caffeine Tracker**! This application helps you track your energy drink consumption, including details like brands, drinks, stores, and transactions. It's hosted on Replit and uses PostgreSQL for data storage.
 
-    Track Energy Drinks: Log your energy drink consumption with details like brand, drink name, volume, caffeine content, and strength.
+## Features ✨
 
-    Store Information: Record where you purchased your energy drinks.
+- **Track Energy Drinks**: Log your energy drink consumption with details like brand, drink name, volume, caffeine content, and strength.
+- **Store Information**: Record where you purchased your energy drinks.
+- **Transaction History**: Keep track of purchase dates and costs.
+- **Simple Interface**: Easy-to-use command-line interface (CLI) for logging and viewing data.
+- **PostgreSQL Database**: Reliable and scalable data storage using PostgreSQL.
 
-    Transaction History: Keep track of purchase dates and costs.
-
-    Simple Interface: Easy-to-use command-line interface (CLI) for logging and viewing data.
-
-    PostgreSQL Database: Reliable and scalable data storage using PostgreSQL.
-
-Database Schema 📊
+## Database Schema 📊
 
 The application uses the following PostgreSQL tables:
-Brand Table
 
+### Brand Table
 Stores information about energy drink brands.
-sql
-Copy
 
+```sql
 CREATE TABLE Brand (
     Brandid SERIAL PRIMARY KEY,
     Brandname VARCHAR(100) NOT NULL
 );
+```
+
 
 Drink Table
 
 Stores information about specific energy drinks, linked to a brand.
-sql
-Copy
+```sql
 
 CREATE TABLE Drink (
     Drinkid SERIAL PRIMARY KEY,
@@ -41,23 +38,22 @@ CREATE TABLE Drink (
     Drinkcaffeine FLOAT NOT NULL,
     Drinkstrength FLOAT NOT NULL
 );
-
+```
 Store Table
 
 Stores information about stores where energy drinks are purchased.
-sql
+```sql
 Copy
 
 CREATE TABLE Store (
     Storeid SERIAL PRIMARY KEY,
     Storename VARCHAR(100) NOT NULL
 );
-
+```
 Transaction Table
 
 Stores transaction details, including the drink, store, cost, and date.
-sql
-Copy
+```sql
 
 CREATE TABLE Transaction (
     Transactionid SERIAL PRIMARY KEY,
@@ -66,7 +62,7 @@ CREATE TABLE Transaction (
     Transactioncost FLOAT NOT NULL,
     Transactiondate TIMESTAMP NOT NULL
 );
-
+```
 Getting Started 🚀
 Prerequisites
 
@@ -146,23 +142,21 @@ Example Queries
 
 Here are some example SQL queries you can use to interact with the database:
 
-    Get All Brands:
-    sql
-    Copy
+Get All Brands:
+
 
     SELECT * FROM Brand;
 
-    Get All Drinks for a Specific Brand:
-    sql
-    Copy
+    
+Get All Drinks for a Specific Brand:
+
 
     SELECT Drinkname, Drinkvolume, Drinkcaffeine, Drinkstrength
     FROM Drink
     WHERE Brandid = 1;
 
-    Get All Transactions:
-    sql
-    Copy
+Get All Transactions:
+
 
     SELECT t.Transactionid, b.Brandname, d.Drinkname, s.Storename, t.Transactioncost, t.Transactiondate
     FROM Transaction t
