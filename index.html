@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Drink Sales Dashboard</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1 style="color: white;">Saman Ashoori Caffeine Tracking</h1>
+
+    <div>
+        <h2 style="color: white;">Total Caffeine Consumed: {{ total_caffeine_consumed }} mg</h2>
+    </div>
+
+    <!-- Bar Chart -->
+    <div id="barChart"></div>
+
+    <!-- Pie Chart -->
+    <div id="pieChart"></div>
+
+    <script>
+        // Render the bar chart
+        var barGraph = {{ graphJSON_bar | safe }};
+        Plotly.newPlot('barChart', barGraph.data, barGraph.layout);
+
+        // Render the pie chart
+        var pieGraph = {{ graphJSON_pie | safe }};
+        Plotly.newPlot('pieChart', pieGraph.data, pieGraph.layout);
+    </script>
+</body>
+</html>
